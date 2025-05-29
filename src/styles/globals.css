@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+  root: ":root";
+  logs: true;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --separator: rgba(17, 17, 17, 0.15);
+}
+
+.dark,
+[data-theme="dark"] {
+  :root {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
+    --color-separator: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-separator: var(--separator);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: oklch(54% 0.245 262.881);
+  --color-primary-content: #fff;
+  --color-secondary: #6020a0;
+  --color-secondary-content: #fff;
+  --color-accent: #ff5524;
+  --color-accent-content: #fff;
+
+  --color-success-content: #fff;
+  --color-error-content: #fff;
+  --color-info-content: #fff;
+
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-base-content-100: oklch(30% 0.006 285.885);
+  --color-base-content-200: oklch(40% 0.006 285.885);
+  --color-base-content-300: oklch(50% 0.006 285.885);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  /* default: true; */
+  --color-primary: oklch(54% 0.245 262.881);
+  --color-primary-content: #fff;
+  --color-secondary: #6020a0;
+  --color-secondary-content: #fff;
+  --color-accent: #ff5524;
+  --color-accent-content: #fff;
+
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-base-content-100: oklch(90% 0.029 256.847);
+  --color-base-content-200: oklch(80% 0.029 256.847);
+  --color-base-content-300: oklch(70% 0.029 256.847);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+.fieldset {
+  @apply p-0;
+}
+
+.input:not(.input-ghost),
+.file-input:not(.input-ghost),
+.textarea:not(.input-ghost) {
+  @apply border-base-content/25;
+  @apply text-base;
+}
+
+.input:focus-within,
+.file-input:focus-within,
+.textarea:focus-within {
+  @apply outline-none;
+}
+
+.input:hover,
+.file-input:hover,
+.textarea:hover {
+  @apply outline-none;
+}
+
+.select:focus-within,
+.select:hover {
+  @apply outline-none;
+}
+
+body {
+  @apply bg-base-100 text-base-content;
+  font-family: Arial, Helvetica, sans-serif;
+}
